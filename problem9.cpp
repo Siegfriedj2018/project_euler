@@ -12,7 +12,18 @@ using std::cout;
 using std::endl;
 
 int main() {
-    
+    size_t a = 0, b = 0, c = 0;
+    for (size_t m = 0; m < 1000; ++m) {
+        for (size_t n = 0; n < (1000-m); ++n) {
+            a = pow(m, 2) - pow(n,2);
+            b = 2 * m *n;
+            c = pow(m, 2) + pow(n,2);
+
+            if (a + b + c == 1000) {
+                cout << a*b*c << endl;
+            }
+        }
+    }
 
 
     return 0;
