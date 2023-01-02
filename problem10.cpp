@@ -1,19 +1,28 @@
 #include <iostream>
 #include <cmath>
+#include <cstring>
 using std::cout;
 using std::endl;
 
 int main() {
-    int SumPrimes = 17;
-    int maxValue = 2000000;
-    for (size_t i = 7; i <= maxValue; i += 1) {
-        for (size_t j = 0; j <= sqrt(i); ++j) {
-            if (fmod(i, j) == 0) {
-                
+    const int maxValue = 2000000;
+    bool prime[maxValue + 1];
+    size_t SumPrimes = 0;
+    memset(prime, true, maxValue + 1);
+
+    for (int p = 2; p * p <= maxValue; ++p) {
+        if (prime[p] == true) {
+            for (int i = p*2; i <= maxValue; i += p) {
+                prime[i] = false;
             }
         }
     }
-    // 104743
+
+    for (int i = 2; i <= maxValue; ++i) {
+        if (prime[i]) {
+            SumPrimes += i;
+        }
+    }
     
-    // cout << __cplusplus << endl;
+    cout << SumPrimes << endl;
 }
