@@ -1,1 +1,2 @@
 # project_euler
+These are my solutions to project euler problems. I used what I learned in school with a little research on internet. I know these are not as efficient as they could be just getting the initial problem solved first.
