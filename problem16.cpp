@@ -1,10 +1,14 @@
+// THis is problem 16 note to self to change later
+
 #include <iostream>
 #include <cmath>
+#include <boost/multiprecision/cpp_int.hpp>
+using boost::multiprecision::cpp_int;
 using std::cout;
 using std::cin;
 using std::endl;
 
-unsigned long long exp(unsigned long long a,unsigned long long b) {
+cpp_int exp(unsigned long long a, unsigned long long b) {
     if (b==1) {
         cout << "A returned"<<endl;
         return a;
@@ -14,7 +18,7 @@ unsigned long long exp(unsigned long long a,unsigned long long b) {
         return a * exp(a, b-1);
     }
     cout << "not recursive..." << endl;
-    unsigned long long temp_exp = exp(a, b/2);
+    cpp_int temp_exp = exp(a, b/2);
     return temp_exp * temp_exp;
 }
 
@@ -26,9 +30,15 @@ int main() {
     cin >> base;
     cout << "Enter exponent: ";
     cin >> expont;
-    unsigned long long sum = 0;
-    sum = exp(base, expont);
+    cpp_int num = 0;
+    num = exp(base, expont);
 
-    // cout << "Starting num: " << num << endl;
+    cpp_int sum = 0;
+    while (num > 0) {
+        sum += (num % 10);
+        num /= 10;
+    }
+
+
     cout << "Final Sum: " << sum << endl;
 }
