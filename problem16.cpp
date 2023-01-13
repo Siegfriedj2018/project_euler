@@ -39,6 +39,5 @@ int main() {
         num /= 10;
     }
 
-
     cout << "Final Sum: " << sum << endl;
 }

@@ -1,5 +1,3 @@
-// THis is problem 16 note to self to change later
-
 #include <iostream>
 #include <cmath>
 #include <boost/multiprecision/cpp_int.hpp>
@@ -8,35 +6,26 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-cpp_int exp(unsigned long long a, unsigned long long b) {
-    if (b==1) {
-        cout << "A returned"<<endl;
-        return a;
+cpp_int fact(size_t num) {
+    cpp_int fact = 1;
+    for (int i = num; i > 0; --i) {
+        fact *= i;
     }
-    if (b % 2 == 1) {
-        cout << "recursive..." << endl;
-        return a * exp(a, b-1);
-    }
-    cout << "not recursive..." << endl;
-    cpp_int temp_exp = exp(a, b/2);
-    return temp_exp * temp_exp;
+    return fact;
 }
 
 int main() {
-    unsigned long long base = 0;
-    unsigned long long expont = 0;
+    size_t num = 0;
+    cpp_int numFact = 0;
 
-    cout << "Enter base: ";
-    cin >> base;
-    cout << "Enter exponent: ";
-    cin >> expont;
-    cpp_int num = 0;
-    num = exp(base, expont);
+    cout << "Enter number for factorial sum: ";
+    cin >> num;
+    numFact = fact(num);
 
     cpp_int sum = 0;
-    while (num > 0) {
-        sum += (num % 10);
-        num /= 10;
+    while (numFact > 0) {
+        sum += (numFact % 10);
+        numFact /= 10;
     }
 
 
